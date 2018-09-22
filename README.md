@@ -86,14 +86,14 @@ $ npm install kline
 * OR CommonJS
 
 ```javascript
-    var Kline = require('kline');
+    var Kline = require('u-kline-o');
 ```
 
 
 * OR ES6
 
 ```javascript
-    import Kline from 'kline';
+    import Kline from 'u-kline-o';
 ```
 
 
