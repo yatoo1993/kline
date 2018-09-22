@@ -5,7 +5,7 @@ import {ChartSettings} from './chart_settings'
 import {Template} from './templates'
 import '../css/main.css'
 import tpl from '../view/tpl.html'
-import fire from './firebase'
+// import fire from './firebase'
 import $ from 'jquery'
 
 
@@ -115,9 +115,9 @@ export default class Kline {
             Control.socketConnect();
         }
 
-        if (!this.disableFirebase) {
-            fire();
-        }
+        // if (!this.disableFirebase) {
+        //     fire();
+        // }
 
         this.registerMouseEvent();
         ChartManager.instance.bindCanvas("main", document.getElementById("chart_mainCanvas"));
