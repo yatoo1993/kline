@@ -67,6 +67,7 @@ export class Control {
             Control.requestOverStomp();
         } else {
             Control.requestOverHttp();
+            Kline.instance.IntervalCallback&& Kline.instance.IntervalCallback()
         }
     }
 

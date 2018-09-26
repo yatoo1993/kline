@@ -43,7 +43,7 @@
 安装
 
 ```bash
-$ npm install kline 
+$ npm install u-kline-o 
 ```
 
 * 使用标签引入, 在HTML页面头部加入
@@ -157,6 +157,7 @@ $ npm install kline
 |`enableSockjs`   | 是否开启sockjs支持 true/false |  true
 |`reverseColor`   | 是否反色, 默认绿涨红跌 true/false | false
 |`stompClient`   | stomp 连接对象 | null
+|`setIntervalCallback`   | 设置poll计时器回调 | null
 
 
 ### Methods

@@ -70,14 +70,16 @@
         limit: 1000,
         intervalTime: 5000,
         debug: true,
-        showTrade: true,
+        showTrade: false,
         onResize: function(width, height) {
             console.log("chart resized: " + width + " " + height);
         }
     });
 
     kline.draw();
-
+    kline.setIntervalCallback(function(){
+        console.log('timer used by interval')
+    })
 
     $('#resize-btn').click(function () {
         var height = $('#height').val();

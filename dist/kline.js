@@ -1917,6 +1917,7 @@ function () {
     this.paused = false;
     this.subscribed = null;
     this.disableFirebase = false;
+    this.IntervalCallback = null;
     this.periodMap = {
       "01w": 7 * 86400 * 1000,
       "03d": 3 * 86400 * 1000,
@@ -2059,6 +2060,21 @@ function () {
 
       if (this.debug) {
         console.log('DEBUG: interval time changed to ' + intervalTime);
+      }
+    }
+    /*
+        @callback: use timer | 利用计时器
+    */
+
+  }, {
+    key: "setIntervalCallback",
+    value: function setIntervalCallback(callback) {
+      if (callback instanceof Function) {
+        this.IntervalCallback = callback;
+      }
+
+      if (this.debug) {
+        console.log('DEBUG: intervalCallback set to ' + callback);
       }
     }
   }, {
@@ -3254,6 +3270,7 @@ function () {
         Control.requestOverStomp();
       } else {
         Control.requestOverHttp();
+        __WEBPACK_IMPORTED_MODULE_0__kline__["a" /* default */].instance.IntervalCallback && __WEBPACK_IMPORTED_MODULE_0__kline__["a" /* default */].instance.IntervalCallback();
       }
     }
   }, {

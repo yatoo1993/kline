@@ -48,7 +48,7 @@ export default class Kline {
         this.paused = false;
         this.subscribed = null;
         this.disableFirebase = false;
-
+        this.IntervalCallback = null;
         this.periodMap = {
             "01w": 7 * 86400 * 1000,
             "03d": 3 * 86400 * 1000,
@@ -182,7 +182,17 @@ export default class Kline {
             console.log('DEBUG: interval time changed to ' + intervalTime);
         }
     }
-
+    /*
+        @callback: use timer | 利用计时器
+    */
+    setIntervalCallback(callback){
+        if(callback instanceof Function){
+            this.IntervalCallback = callback
+        }
+        if (this.debug) {
+            console.log('DEBUG: intervalCallback set to ' + callback);
+        }
+    }
     pause() {
         if (this.debug) {
             console.log('DEBUG: kline paused');
