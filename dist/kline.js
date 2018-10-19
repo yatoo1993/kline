@@ -1685,6 +1685,16 @@ function (_DataSource) {
         return 0;
       }
 
+      if (str.indexOf('e') > 0) {
+        // 科学计数法处理精度
+        var arr = str.split('e');
+        var L1 = arr[0].length - 1;
+        if (arr[1] > 0) return 0; //大于1
+
+        var L2 = Math.abs(arr[1]) - 1;
+        return L1 + L2;
+      }
+
       return str.length - 1 - i;
     }
   }, {
@@ -2478,7 +2488,7 @@ function () {
           __WEBPACK_IMPORTED_MODULE_3__chart_settings__["a" /* ChartSettings */].save();
           __WEBPACK_IMPORTED_MODULE_2__chart_manager__["a" /* ChartManager */].instance.redraw('All', false);
         });
-        __WEBPACK_IMPORTED_MODULE_7_jquery___default()('body').on('click', '#sizeIcon', function () {
+        __WEBPACK_IMPORTED_MODULE_7_jquery___default()('#sizeIcon').on('click', function (e) {
           Kline.instance.isSized = !Kline.instance.isSized;
 
           if (Kline.instance.isSized) {
@@ -2507,6 +2517,8 @@ function () {
               height: Kline.instance.height + 'px'
             });
           }
+
+          e.stopPropagation();
         });
       });
     }
@@ -3649,6 +3661,7 @@ function () {
   }, {
     key: "mouseWheel",
     value: function mouseWheel(e, delta) {
+      // delta是jquery.mousewheel 处理事件回调参数
       __WEBPACK_IMPORTED_MODULE_2__chart_manager__["a" /* ChartManager */].instance.scale(delta > 0 ? 1 : -1);
       __WEBPACK_IMPORTED_MODULE_2__chart_manager__["a" /* ChartManager */].instance.redraw("All", true);
       return false;
