@@ -416,7 +416,7 @@ export class Control {
         Kline.instance.onResize(width, height);
     }
 
-    static mouseWheel(e, delta) {
+    static mouseWheel(e, delta) { // delta是jquery.mousewheel 处理事件回调参数
         ChartManager.instance.scale(delta > 0 ? 1 : -1);
         ChartManager.instance.redraw("All", true);
         return false;

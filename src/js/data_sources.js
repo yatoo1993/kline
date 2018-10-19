@@ -78,6 +78,13 @@ export class MainDataSource extends DataSource {
         if (i < 0) {
             return 0;
         }
+        if(str.indexOf('e') > 0){ // 科学计数法处理精度
+            var arr = str.split('e')
+            var L1 = arr[0].length - 1;
+            if(arr[1] > 0) return 0 //大于1
+            var L2 = Math.abs(arr[1]) - 1
+            return L1 + L2
+          }
         return (str.length - 1) - i;
     }
 

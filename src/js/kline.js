@@ -585,7 +585,7 @@ export default class Kline {
             });
 
 
-            $('body').on('click', '#sizeIcon', function () {
+            $('#sizeIcon').on('click', function (e) {
                 Kline.instance.isSized = !Kline.instance.isSized;
                 if (Kline.instance.isSized) {
                     $(Kline.instance.element).css({
@@ -609,6 +609,7 @@ export default class Kline {
                     Control.onSize(Kline.instance.width, Kline.instance.height);
                     $(Kline.instance.element).css({visibility: 'visible', height: Kline.instance.height + 'px'});
                 }
+                e.stopPropagation()
             });
 
         })
